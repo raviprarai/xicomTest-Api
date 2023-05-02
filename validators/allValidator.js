@@ -13,7 +13,7 @@ const uservalidation = Joi.object({
   fileName2:Joi.string().required(),
   fileType2:Joi.string().required(),
   uploadDocument1:Joi.string(),
-  uploadDocument2:Joi.string()
+  // uploadDocument2:Joi.string()
 });
 module.exports = {
   uservalidation,

@@ -47,16 +47,22 @@ exports.addUser = async (req, res) => {
           }
         }
       } else {
-        if (req.files.length != 0) {
-          req.body.uploadDocument1 = await commonFunction.uploadImage(
-            req.files.uploadDocument1[0].path
-          );
-          req.body.uploadDocument2 = await commonFunction.uploadImage(
-            req.files.uploadDocument2[0].path
-          );
-        }
-        req.body.uploadDocument1 = req.body.uploadDocument1;
+        // if (req.files.length != 0) {
+        //   req.body.uploadDocument1 = await commonFunction.uploadImage(
+        //     req.files.uploadDocument1[0].path
+        //   );
+        //   req.body.uploadDocument2 = await commonFunction.uploadImage(
+        //     req.files.uploadDocument2[0].path
+        //   );
+        // }
+        // req.body.uploadDocument1 = req.body.uploadDocument1;
 
+        let image = [];
+        for (let index = 0; index < req.files.length; index++) {
+            let f = await commonFunction.uploadImage(req.files[index].path);
+            image.push(f);
+        }
+        req.body.uploadDocument1=image;
         let userSave = await new userModel(req.body).save();
         if (userSave) {
           req.body.userId = userSave._id;

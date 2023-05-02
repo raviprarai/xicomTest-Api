@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
     },
     uploadDocument1: {
-      type: String,
+      type: [String],
     },
     fileName2: {
       type: String,
@@ -41,7 +41,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
     },
     uploadDocument2: {
-      type: String,
+      type: [String],
     },
     userType:{
         type:String,
